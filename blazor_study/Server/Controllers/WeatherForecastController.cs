@@ -1,5 +1,7 @@
 using blazor_study.Shared;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace blazor_study.Server.Controllers
 {
@@ -20,6 +22,7 @@ namespace blazor_study.Server.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Administrator")]
         public IEnumerable<WeatherForecast> Get()
         {
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
